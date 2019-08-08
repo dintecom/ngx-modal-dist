@@ -1,0 +1,42 @@
+{
+  "name": "ngx-modal",
+  "version": "8.0.0",
+  "description": "Open modal window (dialog box) for your Angular 8 applications using Bootstrap 4.",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "private": true,
+  "author": {
+    "name": "Umed Khudoiberdiev",
+    "email": "pleerock.me@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pleerock/ngx-modal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pleerock/ngx-modal/issues"
+  },
+  "tags": [
+    "modal",
+    "angular8",
+    "typescript",
+    "angular8-modal"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
+    "@angular/core": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "main": "bundles/ngx-modal.umd.js",
+  "module": "fesm5/ngx-modal.js",
+  "es2015": "fesm2015/ngx-modal.js",
+  "esm5": "esm5/ngx-modal.js",
+  "esm2015": "esm2015/ngx-modal.js",
+  "fesm5": "fesm5/ngx-modal.js",
+  "fesm2015": "fesm2015/ngx-modal.js",
+  "typings": "ngx-modal.d.ts",
+  "metadata": "ngx-modal.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
