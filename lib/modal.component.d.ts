@@ -1,4 +1,4 @@
-import { EventEmitter, ElementRef, OnDestroy } from '@angular/core';
+import { EventEmitter, ElementRef, OnDestroy, ChangeDetectorRef } from '@angular/core';
 export declare class ModalHeaderComponent {
 }
 export declare class ModalContentComponent {
@@ -6,6 +6,7 @@ export declare class ModalContentComponent {
 export declare class ModalFooterComponent {
 }
 export declare class ModalComponent implements OnDestroy {
+    private readonly cdr;
     modalClass: string;
     closeOnEscape: boolean;
     closeOnOutsideClick: boolean;
@@ -19,7 +20,7 @@ export declare class ModalComponent implements OnDestroy {
     isOpened: boolean;
     modalRoot: ElementRef;
     private backdropElement;
-    constructor();
+    constructor(cdr: ChangeDetectorRef);
     ngOnDestroy(): void;
     open(...args: any[]): void;
     close(...args: any[]): void;

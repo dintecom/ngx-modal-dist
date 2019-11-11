@@ -45,7 +45,8 @@
         // -------------------------------------------------------------------------
         // Constructor
         // -------------------------------------------------------------------------
-        function ModalComponent() {
+        function ModalComponent(cdr) {
+            this.cdr = cdr;
             this.closeOnEscape = true;
             this.closeOnOutsideClick = true;
             this.hideCloseButton = false;
@@ -83,6 +84,7 @@
                 this.backdropElement.parentNode === document.body) {
                 document.body.removeChild(this.backdropElement);
             }
+            this.cdr.detectChanges();
         };
         // -------------------------------------------------------------------------
         // Public Methods
@@ -118,6 +120,7 @@
              */
             function () { return _this.modalRoot.nativeElement.focus(); }), 0);
             document.body.className += ' modal-open';
+            this.cdr.detectChanges();
         };
         /**
          * @param {...?} args
@@ -138,6 +141,7 @@
             this.onClose.emit(args);
             this.backdropElement && document.body.removeChild(this.backdropElement);
             document.body.className = document.body.className.replace(/modal-open\b/, '');
+            this.cdr.detectChanges();
         };
         /**
          * @param {?} event
@@ -188,7 +192,9 @@
                     }] }
         ];
         /** @nocollapse */
-        ModalComponent.ctorParameters = function () { return []; };
+        ModalComponent.ctorParameters = function () { return [
+            { type: core.ChangeDetectorRef }
+        ]; };
         ModalComponent.propDecorators = {
             modalClass: [{ type: core.Input }],
             closeOnEscape: [{ type: core.Input }],

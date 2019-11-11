@@ -1,4 +1,4 @@
-import { Component, Input, Output, ViewChild, EventEmitter, NgModule } from '@angular/core';
+import { Component, ChangeDetectorRef, Input, Output, ViewChild, EventEmitter, NgModule } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -43,7 +43,8 @@ var ModalComponent = /** @class */ (function () {
     // -------------------------------------------------------------------------
     // Constructor
     // -------------------------------------------------------------------------
-    function ModalComponent() {
+    function ModalComponent(cdr) {
+        this.cdr = cdr;
         this.closeOnEscape = true;
         this.closeOnOutsideClick = true;
         this.hideCloseButton = false;
@@ -81,6 +82,7 @@ var ModalComponent = /** @class */ (function () {
             this.backdropElement.parentNode === document.body) {
             document.body.removeChild(this.backdropElement);
         }
+        this.cdr.detectChanges();
     };
     // -------------------------------------------------------------------------
     // Public Methods
@@ -116,6 +118,7 @@ var ModalComponent = /** @class */ (function () {
          */
         function () { return _this.modalRoot.nativeElement.focus(); }), 0);
         document.body.className += ' modal-open';
+        this.cdr.detectChanges();
     };
     /**
      * @param {...?} args
@@ -136,6 +139,7 @@ var ModalComponent = /** @class */ (function () {
         this.onClose.emit(args);
         this.backdropElement && document.body.removeChild(this.backdropElement);
         document.body.className = document.body.className.replace(/modal-open\b/, '');
+        this.cdr.detectChanges();
     };
     /**
      * @param {?} event
@@ -186,7 +190,9 @@ var ModalComponent = /** @class */ (function () {
                 }] }
     ];
     /** @nocollapse */
-    ModalComponent.ctorParameters = function () { return []; };
+    ModalComponent.ctorParameters = function () { return [
+        { type: ChangeDetectorRef }
+    ]; };
     ModalComponent.propDecorators = {
         modalClass: [{ type: Input }],
         closeOnEscape: [{ type: Input }],
