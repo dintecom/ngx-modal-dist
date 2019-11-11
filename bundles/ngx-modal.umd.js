@@ -84,7 +84,6 @@
                 this.backdropElement.parentNode === document.body) {
                 document.body.removeChild(this.backdropElement);
             }
-            this.cdr.detectChanges();
         };
         // -------------------------------------------------------------------------
         // Public Methods
